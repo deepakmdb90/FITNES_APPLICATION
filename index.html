@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fit Wake App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      animation: fade 16s infinite;
+    }
+
+    .slide:nth-child(1) { background-image: url('https://img.freepik.com/free-photo/low-angle-view-unrecognizable-muscular-build-man-preparing-lifting-barbell-health-club_637285-2497.jpg?semt=ais_tags_boosted'); animation-delay: 0s; }
+    .slide:nth-child(2) { background-image: url('https://img.freepik.com/free-photo/fit-young-woman-lifting-barbells-looking-focused-working-out-gym_155003-5353.jpg?semt=ais_tags_boosted'); animation-delay: 4s; }
+    .slide:nth-child(3) { background-image: url('https://img.freepik.com/free-photo/close-up-smiley-man-woman-table_23-2148899034.jpg?semt=ais_tags_boosted'); animation-delay: 8s; }
+    .slide:nth-child(4) { background-image: url('https://img.freepik.com/free-photo/dumbell-jump-rope-bottle-water_23-2147688548.jpg?semt=ais_tags_boosted'); animation-delay: 12s; }
+
+    @keyframes fade {
+      0% { opacity: 0; }
+      25% { opacity: 1; }
+      75% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      text-align: center;
+      color: white;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f5;
+      color: #333;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #4A90E2, #9013FE);
+      color: white;
+      padding: 40px 10px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .hero:hover {
+      background: linear-gradient(to left, #4A90E2, #9013FE);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: 2.8rem;
+      font-weight: 200;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .hero p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .font-dancing {
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .underline {
+      text-decoration: underline;
+    }
+
+    /* Calorie Tracker UI */
+    .calorie-tracker-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 350px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .calorie-tracker-container img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .calorie-tracker-container .button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background-color 0.3s ease;
+    }
+
+    .calorie-tracker-container .button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body class="font-roboto bg-gray-100">
+  <!-- Navigation Bar -->
+  <nav class="bg-gray-900 fixed w-full z-10">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="#home" class="text-3xl font-bold text-white">Fit Wake</a>
+      <ul class="flex space-x-6">
+        <li><a href="#home" class="text-white font-medium relative group">
+          Home
+          <span class="absolute left-0 bottom-0 w-0 h-1 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a></li>
+        <li><a href="#about" class="text-white font-medium relative group">
+          About
+          <span class="absolute left-0 bottom-0 w-0 h-1 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a></li>
+        <li><a href="#diet" class="text-white font-medium relative group">
+          Diet Plan
+          <span class="absolute left-0 bottom-0 w-0 h-1 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a></li>
+        <li><a href="workout.html" class="text-white font-medium relative group">
+          Workout
+          <span class="absolute left-0 bottom-0 w-0 h-1 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a></li>
+        <li><a href="#contact" class="text-white font-medium relative group">
+          Contact
+          <span class="absolute left-0 bottom-0 w-0 h-1 bg-blue-600 transition-all group-hover:w-full"></span>
+        </a></li>
+      </ul>
+      <div class="flex space-x-4">
+        <a href="login.html" class="text-white px-4 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg font-bold">Login</a>
+        <a href="signup.html" class="text-white px-4 py-2 bg-green-600 hover:bg-green-500 rounded-lg font-bold">Sign Up</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative flex items-center justify-center text-center text-white h-screen">
+    <div class="slideshow-container">
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+      <div class="slide"></div>
+    </div>
+    <div class="hero-text">
+      <h1 class="text-5xl font-bold mb-4">Welcome to Fit Wake</h1>
+      <p class="text-lg mb-8">Your ultimate fitness companion. Get personalized diet plans and workout routines.</p>
+      <a href="#diet" class="bg-white text-teal-600 px-6 py-2 rounded-full font-bold hover:bg-gray-200">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Calorie Tracker Section -->
+  <section class="calorie-tracker-section">
+    <div class="calorie-tracker-container">
+      <img src="asset/2d0730d2-5e84-44ee-98fe-748a6c624aca.jpeg" alt="Calorie Tracker">
+      <h2 class="text-2xl font-bold mb-4">Track Your Calories</h2>
+      <p class="mb-4">Monitor your daily intake and achieve your fitness goals!</p>
+      <button class="button" onclick="goToCalorieCalculator()">Count Your Calories</button>
+    </div>
+  </section>
+
+  <script>
+    function goToCalorieCalculator() {
+      alert('Redirecting to the Calorie Calculator...');
+      // Replace with your calorie calculator link
+      window.location.href = "calorie_count.html";
+    }
+  </script>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-gradient-to-r from-white to-gray-100">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 text-left">
+        <h2 class="text-3xl font-bold mb-6">About Us</h2>
+        <p class="text-gray-800 mb-4 leading-relaxed" style="font-size: 25px;">
+          Fit Wake is your partner in achieving a healthy lifestyle. We offer personalized diet plans, effective workout routines, and expert guidance to help you meet your fitness goals.
+        </p>
+        <p class="text-gray-800 mb-4 leading-relaxed" style="font-size: 25px;">
+          Our mission is to empower individuals to embrace fitness not just as a goal but as a lifelong journey. Let us help you unlock your potential and transform your dreams into reality.
+        </p>
+        <p class="text-gray-800 leading-relaxed" style="font-size: 25px;">
+          Join us and take the first step toward a healthier, happier you. Together, we can achieve greatness, one step at a time.
+        </p>
+      </div>
+      <div class="md:w-1/2 mt-8 md:mt-0">
+        <img src="https://img.freepik.com/free-photo/group-young-people-stretching-training-gym_1303-23846.jpg" alt="Fitness" class="rounded-lg shadow-md">
+      </div>
+    </div>
+  </section>
+
+  <!-- Diet Plan Section -->
+  <section id="diet" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Diet Plan</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img src="https://i0.wp.com/thedizzycook.com/wp-content/uploads/2023/05/Cottage-cheese-with-fruit-3.jpg?ssl=1" alt="Breakfast" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Breakfast</h3>
+            <p class="text-gray-700">*Oats, Yogurt, Blueberries, Strawberries, Chia seeds energize your morning.</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img src="https://img.freepik.com/free-photo/healthy-lunch-bowl-salmon-avocado_2829-16500.jpg" alt="Lunch" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Lunch</h3>
+            <p class="text-gray-700">*Grilled Salmon, Avocado Salad, and Quinoa for a nutritious midday meal.</p>
+          </div>
+        </div>
+        <div class="bg-white shadow-md rounded-lg overflow-hidden">
+          <img src="https://img.freepik.com/free-photo/grilled-chicken-breast-bulgur_2829-19430.jpg" alt="Dinner" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">Dinner</h3>
+            <p class="text-gray-700">*Grilled Chicken Breast, Bulgur, and Steamed Vegetables for a balanced dinner.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Track Diet Button -->
+      <div class="text-center mt-8">
+        <a href="track_diet.html" class="bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-full font-bold">Track Diet</a>
+      </div>
+
+   <!-- Contact Section -->
+   <div class="hero mt-20 text-center">
+    <h1 class="text-2xl font-bold">Contact Us</h1>
+    <p class="text-md mt-2">We are here to assist you. Feel free to reach out!</p>
+  </div>  
+
+<section id="contact" class="py-20 bg-gradient-to-r from-white to-blue-50">
+  <div class="contact-container">
+    <h2 class="text-3xl font-bold text-center mb-6">Contact Us</h2>
+    <form>
+      <div class="form-group">
+        <label for="first-name" class="text-lg font-semibold">First Name</label>
+        <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+      </div>
+      <div class="form-group">
+        <label for="last-name" class="text-lg font-semibold">Last Name</label>
+        <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+      </div>
+      <div class="form-group">
+        <label for="email" class="text-lg font-semibold">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="message" class="text-lg font-semibold">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-6 rounded-lg font-bold hover:bg-blue-500 transition-all duration-300">
+          Send Message
+        </button>
+      </div>
+    </form>
+    
+    </div>
+  </div>
+</script>
+</section>
+</body>
+</html>
